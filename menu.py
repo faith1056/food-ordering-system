@@ -16,8 +16,7 @@ prices = {
     "Fruit": 600
 }
 
-print(prices)
-
+customer_name = input("What is your name? ").strip().title()
 choice = input("What would you like to order? ").strip().title()
 
 # Check if category is valid
@@ -86,6 +85,8 @@ while again == "yes":
 
     total = total + prices[more_orders] * more_quantity
 
+    orders_list.append([more_orders, more_quantity])
+
     print(
         f"You ordered {more_quantity} x {more_orders}: "
         f"₦{prices[more_orders] * more_quantity}!"
@@ -93,4 +94,21 @@ while again == "yes":
 
     again = input("Do you want another item? yes/no: ").strip().lower()
 
-print(f"Total: ₦{total}")
+
+
+print("\n========== RECEIPT ==========")
+print(f"Customer:  {customer_name}")
+
+for order in orders_list:
+    food = order[0]
+    quantity = order[1]
+    subtotal = prices[food] * quantity
+
+    print(f"\n{food}")
+    print(f"Quantity: {quantity}")
+    print(f"Subtotal: ₦{subtotal}")
+
+print("\n-----------------------------")
+print(f"TOTAL: ₦{total}")
+print("=============================")
+
