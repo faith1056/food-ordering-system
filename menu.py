@@ -17,6 +17,7 @@ prices = {
 }
 
 customer_name = input("What is your name? ").strip().title()
+
 choice = input("What would you like to order? ").strip().title()
 
 # Check if category is valid
@@ -94,6 +95,15 @@ while again == "yes":
 
     again = input("Do you want another item? yes/no: ").strip().lower()
 
+payment_method = input(
+    "How would you like to pay? Cash, Transfer, or POS: "
+).strip().title()
+
+while payment_method not in ["Cash", "Transfer", "Pos"]:
+    print("Invalid payment method.")
+    payment_method = input(
+        "Please choose Cash, Transfer, or POS: "
+    ).strip().title()
 
 
 print("\n========== RECEIPT ==========")
@@ -109,6 +119,7 @@ for order in orders_list:
     print(f"Subtotal: ₦{subtotal}")
 
 print("\n-----------------------------")
+print(f"PAYMENT METHOD: {payment_method}")
 print(f"TOTAL: ₦{total}")
 print("=============================")
 
