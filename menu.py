@@ -25,11 +25,14 @@ for item in categories[choice]:
     print(item)
 
 # First order
+total = 0
+
 orders = input("What would you like to order? ").strip().title()
 
 while orders not in categories[choice]:
     print("Order not available")
     orders = input("What would you like to order? ").strip().title()
+total = total + prices[orders]
 
 print(f"You ordered {orders}: ₦{prices[orders]}!")
 
@@ -43,7 +46,10 @@ while again == "yes":
     while more_orders not in categories[choice]:
         print("Your order is not available in this category")
         more_orders = input("What would you like to order? ").strip().title()
+    
+    total = total + prices[more_orders]
 
     print(f"You ordered {more_orders}: ₦{prices[more_orders]}!")
 
     again = input("Do you want another item? yes/no: ")
+print(f"Total: ₦{total}")
